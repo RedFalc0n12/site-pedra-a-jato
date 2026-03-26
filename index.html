@@ -12,10 +12,10 @@
   <header>
     <div class="container topbar">
       <a class="brand" href="#">
-        <div class="logo">OM</div>
+        <div class="logo">PaJ</div>
         <div>
           <div style="font-weight:700">Pedra a Jato</div>
-          <div style="font-size:0.85rem;color:var(--muted)">25 anos de experiência</div>
+          <div style="font-size:0.85rem;color:var(--muted)">+25 anos de experiência</div>
         </div>
       </a>
 
@@ -25,7 +25,8 @@
         <a href="#sobre">Quem somos</a>
         <a href="#contato" class="cta">Contato</a>
       </nav>
-
+      <button id="toggle-dark">🌙</button>
+      
       <button class="menu-toggle" aria-label="Abrir menu">☰</button>
     </div>
   </header>
@@ -65,11 +66,11 @@
         <p class="lead">Empresa familiar com mais de duas décadas de atuação em restauração e manutenção de pedras naturais. Atuamos com transparência, prazos cumpridos e garantia técnica.</p>
 
         <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:18px">
-          <div style="flex:1;min-width:220px;background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)">
+          <div class="sobre-box">
             <strong>Missão</strong>
             <p class="muted" style="margin:8px 0 0">Preservar e valorizar superfícies em pedra, entregando acabamento duradouro.</p>
           </div>
-          <div style="flex:1;min-width:220px;background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow)">
+          <div class="sobre-box">
             <strong>Visão</strong>
             <p class="muted" style="margin:8px 0 0">Ser referência regional em qualidade e atendimento técnico.</p>
           </div>
@@ -87,8 +88,8 @@
           </article>
 
           <article class="service" role="listitem">
-            <h3>Rejuntamento e Assentamento</h3>
-            <p>Correção de rejuntes, troca e nivelamento para garantir acabamento estético e funcional.</p>
+            <h3>Rejuntamento</h3>
+            <p>Correção de rejuntes, troca garantir acabamento estético e funcional.</p>
           </article>
 
           <article class="service" role="listitem">
@@ -98,7 +99,7 @@
 
           <article class="service" role="listitem">
             <h3>Recuperação de Fachadas</h3>
-            <p>Limpeza técnica, reparos e fixação de placas para fachadas em pedra natural.</p>
+            <p>Limpeza técnica e reparos para fachadas em pedra natural.</p>
           </article>
 
           <article class="service" role="listitem">
@@ -116,14 +117,18 @@
       <section id="portfolio" aria-labelledby="portfolio-title">
         <h2 id="portfolio-title">Portfólio</h2>
         <p class="lead">Alguns trabalhos recentes. Clique nas imagens para ampliar (implemente lightbox conforme necessidade).</p>
-
+        <!-- galeria -->
         <div class="gallery" aria-hidden="false">
-          <img src="https://images.unsplash.com/photo-1505691723518-36a0f3b3b3b3?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Bancada de mármore polida">
-          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Piso de granito restaurado">
+          <img src="imagens/cooktop.jpg" alt="Bancada de mármore polida">
+          <img src="imagens/predio_antes_depois.jpg" alt="Fachada antes e depois">
           <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Fachada com placas de pedra">
           <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Detalhe de polimento">
           <img src="https://images.unsplash.com/photo-1505691723518-36a0f3b3b3b3?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Bancada antes e depois">
           <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1200&auto=format&fit=crop&s=placeholder" alt="Serviço em condomínio">
+        </div>
+        <div id="lightbox" class="lightbox">
+          <span class="close">&times;</span>
+          <img id="lightbox-img" src="" alt="">
         </div>
       </section>
 
@@ -168,12 +173,12 @@
           <aside class="contact-info" aria-label="Informações de contato">
             <strong>Pedra a Jato</strong>
             <p class="muted">Atendimento: Segunda a Sexta, 8h às 18h</p>
-            <p><strong>Telefone:</strong> <a href="tel:+5521999999999"> (21) 9 9999-9999</a></p>
-            <p><strong>E-mail:</strong> <a href="mailto:contato@oficinadosmarmores.com.br">contato@oficinadosmarmores.com.br</a></p>
+            <p><strong>Telefone:</strong> <a class="contact-link" href="tel:+5521991605543"> (21) 9 9160-5543</a></p>
+            <p><strong>E-mail:</strong> <a class="contact-link" href="mailto:pedraajato@hotmail.com">pedraajato@hotmail.com</a></p>
             <p><strong>Atuação:</strong> Rio de Janeiro e região metropolitana</p>
 
             <div style="margin-top:12px">
-              <a class="cta" href="https://wa.me/5521999999999" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Abrir WhatsApp</a>
+              <a class="cta" href="https://wa.me/5521991605543" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Abrir WhatsApp</a>
             </div>
           </aside>
         </div>
