@@ -4,36 +4,50 @@
      a existência dos elementos com o operador optional chaining (?.).
 */
 
-// Toggle rápido (caso o botão exista no DOM em execução imediata)
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('nav');
-toggle?.addEventListener('click', () => {
-  // Alterna o display do nav para a versão mobile criada via estilos inline
-  if (nav.style.display === 'flex') {
-    nav.style.display = 'none'; // fecha
-  } else {
-    // abre com estilo column e posição flutuante (apenas para mobile)
-    nav.style.display = 'flex';
-    nav.style.flexDirection = 'column';
-    nav.style.position = 'absolute';
-    nav.style.right = '20px';
-    nav.style.top = '72px';
-    nav.style.background = 'white';
-    nav.style.padding = '12px';
-    nav.style.borderRadius = '10px';
-    nav.style.boxShadow = '0 8px 24px rgba(16,24,40,0.12)';
-  }
-});
+// Ajusta o padding-top do body para a altura do header (previne sobreposição)
+function adjustHeaderOffset(){
+  const header = document.querySelector('header');
+  if(!header) return;
+  const h = header.offsetHeight;
+  document.documentElement.style.setProperty('--header-height', h + 'px');
+}
+
+// Função para abrir/fechar o menu — busca elementos dinamicamente
+function setMenuState(open) {
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.menu-toggle');
+  if (!nav || !toggle) return;
+  nav.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  try { adjustHeaderOffset(); } catch (e) {}
+}
+
+// recalcula no carregamento e redimensionamento da janela
+window.addEventListener('load', adjustHeaderOffset);
+window.addEventListener('resize', adjustHeaderOffset);
+document.addEventListener('DOMContentLoaded', adjustHeaderOffset);
 
 // Garantir manipulações seguras após DOM pronto (menu e modo escuro)
 document.addEventListener("DOMContentLoaded", function() {
   // Menu mobile (segunda verificação — segura se o script executar no head)
   const toggleMenu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('nav');
+  // Ensure clicking the toggle uses the same setMenuState helper
   toggleMenu?.addEventListener('click', () => {
-    // Alterna visibilidade por simplicidade
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    setMenuState(!nav.classList.contains('open'));
   });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!nav.classList.contains('open')) return;
+    const target = e.target;
+    if (!nav.contains(target) && !toggleMenu.contains(target)) {
+      setMenuState(false);
+    }
+  });
+
+  // Close menu when clicking a nav link
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenuState(false)));
 
   // Botão modo noturno: alterna a classe `dark-mode` no <body>
   const toggleDark = document.getElementById("toggle-dark");

@@ -50,6 +50,18 @@ nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:0.95rem}
 .cta{background:var(--primary);color:var(--light);padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(11,107,90,0.12)}
 .menu-toggle{display:none}
 
+nav.open{
+  display:flex;
+}
+/* Mobile menu open state (controlled by JS via .open) */
+nav.open{
+  display:flex;
+}
+.menu-toggle{display:none;z-index:1200}
+
+/* center the text block inside the brand vertically */
+.brand > div{display:flex;flex-direction:column;justify-content:center}
+
 /* Hero */
 .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:56px 0}
 .hero-left h1{font-family:"Montserrat",sans-serif;font-size:2.2rem;margin:0 0 12px;color:var(--accent)}
@@ -230,13 +242,60 @@ footer{padding:24px 0;border-top:1px solid rgba(0,0,0,0.04);background:#fff}
   .contact-grid{grid-template-columns:1fr}
   nav{display:none}
   .menu-toggle{display:block}
+
+  /* When open, position the nav as an overlay panel */
+  nav.open{
+    position: fixed;
+    top: var(--header-height, 80px);
+    right: 16px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--card);
+    padding: 14px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    z-index: 1500;
+  }
+
+  nav.open a{padding:8px 6px}
 }
 @media (max-width:560px){
   .services{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr}
   .brand .logo{width:48px;height:48px}
   .hero-left h1{font-size:1.6rem}
+  /* center brand text on small screens */
+  .brand > div{ text-align: center; }
+  .brand{ gap:10px; }
 }
+@media (max-width:560px){
+  .brand .logo img {
+    width: 60px;
+    height: auto;
+  }
+  .topbar {
+    padding: 8px 0;
+  }
+}
+
+@media (max-width:560px){
+  .menu-toggle, #toggle-dark {
+    font-size: 1.4rem;
+
+  }
+}
+
+@media (max-width:560px){
+  .hero-right {
+    min-height: 200px;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+
 /* Modo noturno */
 body.dark-mode {
   background: #121212;
@@ -313,6 +372,16 @@ body.dark-mode .faq  {
   box-shadow: none;
 }
 
+body.dark-mode .menu-toggle {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: #e0e0e0;
+}
+.dark-mode nav.open {
+  background: #1e1e1e;
+  box-shadow: none;
+}
+
 
 /* botao Dark */
 #toggle-dark {
@@ -322,6 +391,10 @@ body.dark-mode .faq  {
   cursor: pointer;
   color: var(--accent);
 }
+.menu-toggle, #toggle-dark {
+  margin-left: 8px;
+}
+
 
 
 /* Small utilities */
