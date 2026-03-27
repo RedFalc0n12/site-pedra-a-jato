@@ -286,6 +286,11 @@ footer{padding:24px 0;border-top:1px solid rgba(0,0,0,0.04);background:#fff}
 
   }
 }
+@media (max-width:560px){
+  .menu-toggle {
+    margin-right: 20px;
+  }
+}
 
 @media (max-width:560px){
   .hero-right {
