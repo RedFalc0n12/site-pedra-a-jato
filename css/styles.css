@@ -276,8 +276,11 @@ footer{padding:24px 0;border-top:1px solid rgba(0,0,0,0.04);background:#fff}
     height: auto;
   }
   .topbar {
-    padding: 8px 0;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 16px;
+}
 }
 
 @media (max-width:560px){
@@ -287,17 +290,18 @@ footer{padding:24px 0;border-top:1px solid rgba(0,0,0,0.04);background:#fff}
   }
 }
 @media (max-width:560px){
-  .topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* logo à esquerda, ícones à direita */
-  padding: 0 16px;
+  .menu-toggle {
+    margin-right: 20px;
+  }
 }
 
-.menu-toggle {
-  margin-right: 10px; /* pequeno respiro da borda */
-}
-
+@media (max-width:560px){
+  #toggle-dark {
+    order: 1; /* aparece primeiro */
+  }
+  .menu-toggle {
+    order: 2; /* aparece depois */
+  }
 }
 
 @media (max-width:560px){
