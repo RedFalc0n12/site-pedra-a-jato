@@ -287,9 +287,17 @@ footer{padding:24px 0;border-top:1px solid rgba(0,0,0,0.04);background:#fff}
   }
 }
 @media (max-width:560px){
-  .menu-toggle {
-    margin-right: 20px;
-  }
+  .topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo à esquerda, ícones à direita */
+  padding: 0 16px;
+}
+
+.menu-toggle {
+  margin-right: 10px; /* pequeno respiro da borda */
+}
+
 }
 
 @media (max-width:560px){
