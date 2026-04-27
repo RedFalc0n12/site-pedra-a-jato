@@ -5,9 +5,9 @@
 */
 
 // Ajusta o padding-top do body para a altura do header (previne sobreposição)
-function adjustHeaderOffset(){
+function adjustHeaderOffset() {
   const header = document.querySelector('header');
-  if(!header) return;
+  if (!header) return;
   const h = header.offsetHeight;
   document.documentElement.style.setProperty('--header-height', h + 'px');
 }
@@ -19,7 +19,7 @@ function setMenuState(open) {
   if (!nav || !toggle) return;
   nav.classList.toggle('open', open);
   toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  try { adjustHeaderOffset(); } catch (e) {}
+  try { adjustHeaderOffset(); } catch (e) { }
 }
 
 // recalcula no carregamento e redimensionamento da janela
@@ -28,7 +28,7 @@ window.addEventListener('resize', adjustHeaderOffset);
 document.addEventListener('DOMContentLoaded', adjustHeaderOffset);
 
 // Garantir manipulações seguras após DOM pronto (menu e modo escuro)
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Menu mobile (segunda verificação — segura se o script executar no head)
   const toggleMenu = document.querySelector('.menu-toggle');
   const nav = document.querySelector('nav');
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
    - `closeLightbox()` pausa e limpa a fonte do vídeo para liberar recursos.
    - botões prev/next navegam ciclicamente pelos itens da galeria.
 */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
   const lightboxVideo = document.getElementById("lightbox-video");
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Pausa qualquer vídeo que esteja tocando na galeria para evitar overlap
     galleryItems.forEach(it => {
       if (it.tagName && it.tagName.toLowerCase() === 'video') {
-        try { it.pause(); } catch (err) {}
+        try { it.pause(); } catch (err) { }
       }
     });
 
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function() {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        try { item.pause(); } catch (err) {}
+        try { item.pause(); } catch (err) { }
         item.currentTime = 0;
         openLightbox(item, index);
       });
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const index = galleryItems.indexOf(vid);
       if (index === -1) return;
       // garante que o vídeo da miniatura não comece a tocar
-      try { vid.pause(); } catch (err) {}
+      try { vid.pause(); } catch (err) { }
       vid.currentTime = 0;
       openLightbox(vid, index);
     });
@@ -209,10 +209,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // hover (desktop)
     v.addEventListener('mouseenter', () => {
-      try { v.play(); } catch (e) {}
+      try { v.play(); } catch (e) { }
     });
     v.addEventListener('mouseleave', () => {
-      try { v.pause(); v.currentTime = 0; } catch (e) {}
+      try { v.pause(); v.currentTime = 0; } catch (e) { }
     });
   });
 
@@ -222,9 +222,9 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         const vid = entry.target;
         if (entry.intersectionRatio >= 0.5) {
-          try { vid.play(); } catch (e) {}
+          try { vid.play(); } catch (e) { }
         } else {
-          try { vid.pause(); vid.currentTime = 0; } catch (e) {}
+          try { vid.pause(); vid.currentTime = 0; } catch (e) { }
         }
       });
     }, { threshold: [0.5] });
