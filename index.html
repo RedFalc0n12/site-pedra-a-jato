@@ -59,7 +59,9 @@
           </div>
         </div>
 
-        <div class="hero-right" role="img" aria-label="Imagem ilustrativa de mármore e bancada"></div>
+        <div class="hero-right" role="img" aria-label="Imagem ilustrativa de mármore e bancada" >
+          <img src="imagens/cooktop.jpg" alt="Imagem ilustrativa de mármore e bancada">
+        </div>
       </section>
 
       <section id="sobre" aria-labelledby="sobre-title">
@@ -234,6 +236,33 @@
       <div class="small muted">Design e desenvolvimento:<a class="contact-link" href="https://github.com/RedFalc0n12">Felipe Gijsen Downs</a></div>
     </div>
   </footer>
+  <!-- Totem do chatbot -->
+  <div class="chat-totem" onclick="toggleChat()">
+    <img src="imagens/banner.png" alt="Agente IA">
+     <span>Atendimento Pedra a Jato</span> 
+  </div>
+
+  <!-- Janela de chat -->
+  <div id="chatbox" class="chatbox" style="display:none;">
+    <div class="chat-header">
+      Agente Pedra a Jato
+      <button class="close-btn" onclick="toggleChat()">X</button>
+    </div>
+    <div class="mensagens">
+      <p>Olá! Como posso ajudar?</p>
+    </div>
+    <div>
+      <form id="chat-form">
+        <div>
+          <input type="text" id="chat-input" placeholder="Digite sua mensagem..." autocomplete="off">
+          <button type="submit">></button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+fet
+
 
   <script src="js/script.js"></script>
 </body>

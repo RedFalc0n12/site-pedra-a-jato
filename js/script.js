@@ -253,3 +253,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+
+function toggleChat() {
+  const chatbox = document.getElementById('chatbox');
+  if (chatbox.style.display === "none" || chatbox.style.display === "") {
+    chatbox.style.display = "flex"; // abre
+  } else {
+    chatbox.style.display = "none"; // fecha
+  }
+}
+
+// Captura envio do formulário
+document.getElementById('chat-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // evita recarregar a página
+  const input = document.getElementById('chat-input');
+  const mensagens = document.getElementById('mensagens');
+
+  if (input.value.trim() !== "") {
+    /* // cria nova mensagem
+    const msg = document.createElement('p')
+    msg.textContent = input.value
+    mensagens.appendChild(msg); */ 
+    
+    // rola para baixo automaticamente
+    /* mensagens.scrollTop = mensagens.scrollHeight; */
+    fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: input.value })
+    })
+    .then(response => response.json())
+    .then(data => {
+      const msg = document.createElement('p');
+      msg.textContent = data.reply || "Desculpe, não entendi.";
+      mensagens.appendChild(msg);
+      mensagens.scrollTop = mensagens.scrollHeight; // rola para a última mensagem
+    })
+    .catch(err => {
+      console.error('Erro na comunicação com o servidor:', err);
+      const errorMsg = document.createElement('p');
+      errorMsg.textContent = "Ocorreu um erro. Tente novamente mais tarde.";
+      mensagens.appendChild(errorMsg);
+      mensagens.scrollTop = mensagens.scrollHeight;
+    });
+    // limpa campo
+    input.value = "";
+  }
+});
